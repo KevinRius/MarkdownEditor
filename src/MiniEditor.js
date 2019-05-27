@@ -61,7 +61,7 @@ class MiniEditor extends Component {
     this.setState({content: ''});
   }
   handleCopy = () => {
-    let copyText = document.getElementById('exampleText');
+    let copyText = document.getElementById('editor');
     copyText.select();
     document.execCommand('copy');
   }
@@ -69,9 +69,9 @@ class MiniEditor extends Component {
     return (
       <Container className="MiniEditor mb-4">
         <FormGroup className="mt-3" style={{height: '40vh'}}>
-            <Label for="exampleText" className="text-center w-100 mt-3"><h1>Markdown Editor</h1></Label>
+            <Label for="editor" className="text-center w-100 mt-3"><h1>Markdown Editor</h1></Label>
             <div className="d-flex justify-content-center h-100 row">
-              <Input type="textarea" name="text" id="exampleText" className="mt-3 w-75 h-75 shadow" onChange={this.handleChange} value={this.state.content}/>
+              <Input type="textarea" name="text" id="editor" className="mt-3 w-75 h-75 shadow" onChange={this.handleChange} value={this.state.content}/>
             </div>
         </FormGroup>
         <MarkdownView textIn={this.state.content} clear={this.handleClear} copy={this.handleCopy}/>

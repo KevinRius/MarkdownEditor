@@ -7,12 +7,13 @@ class MarkdownView extends Component {
         content: ''
     }
     render() {
+        marked.setOptions({breaks: true})
         return (
             <div>
                 <Card className="shadow h-100">
                     <CardBody className="min-h-100">
                         <CardTitle>Markdown Preview</CardTitle>
-                        <CardText dangerouslySetInnerHTML={{__html: marked(this.props.textIn)}} className="border"></CardText>
+                        <CardText dangerouslySetInnerHTML={{__html: marked(this.props.textIn)}} className="border" id="preview"></CardText>
                         <Row>
                             <Button color="primary" className="mx-5" onClick={this.props.copy}>Copy</Button>
                             <Button color="primary" onClick={this.props.clear}>Clear</Button>
