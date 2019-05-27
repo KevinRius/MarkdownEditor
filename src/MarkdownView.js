@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Row, Card, CardText, CardBody, CardTitle, Button } from 'reactstrap';
 import marked from 'marked';
 
 class MarkdownView extends Component {
@@ -9,12 +9,14 @@ class MarkdownView extends Component {
     render() {
         return (
             <div>
-                <Card>
-                    <CardBody>
+                <Card className="shadow h-100">
+                    <CardBody className="min-h-100">
                         <CardTitle>Markdown Preview</CardTitle>
-                        <CardSubtitle>Card subtitle</CardSubtitle>
-                        <CardText dangerouslySetInnerHTML={{__html: marked('# Marked in the browser\n\nRendered by **marked**.')}}></CardText>
-                        <Button>Button</Button>
+                        <CardText dangerouslySetInnerHTML={{__html: marked(this.props.textIn)}} className="border"></CardText>
+                        <Row>
+                            <Button color="primary" className="mx-5" onClick={this.props.copy}>Copy</Button>
+                            <Button color="primary" onClick={this.props.clear}>Clear</Button>
+                        </Row>
                     </CardBody>
                 </Card>
             </div>
